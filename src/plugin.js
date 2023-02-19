@@ -18,6 +18,7 @@ function _plugin(api, settings={}) {
 		filterMapping: {
 			// <filterName>: <functionName>"
 			isAbsoluteURL: "isAbsoluteURL",
+			isRootRelative: "isRootRelative",,
 			rootRelativePath: "rootRelativePath",
 			absoluteURL: "absoluteURL"
 			//urlify: "urlify"

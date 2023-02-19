@@ -23,6 +23,13 @@ lib.isAbsoluteURL = function (input) {
 	}
 };
 
+lib.isRootRelative = function (input) {
+	if (typeof input !== 'string') {
+		return false;
+	}
+	return input.startsWith("/");
+}
+
 /**
  * Takes a path relative or absolute URL and makes it root relative.
  * 
@@ -74,6 +81,15 @@ lib.absoluteURL = function (input, baseURL, pathPrefix) {
 		console.error(`Failed to convert '${input}' with base ${baseURL} to an absolute URL and failed.`);
 		return input;
 	  }
+};
+
+lib.prefixRelativePath = function (input, pathPrefix) {
+	if (lib.isAbsoluteURL(input)) {
+		// We don't need to do anything here...
+		return input;
+	}
+
+	// ...
 };
 
 lib.urlify = function (input, options) {
