@@ -18,10 +18,10 @@ function _plugin(api, settings={}) {
 		filterMapping: {
 			// <filterName>: <functionName>"
 			isAbsoluteURL: "isAbsoluteURL",
-			isRootRelative: "isRootRelative",,
+			isRootRelative: "isRootRelative",
 			rootRelativePath: "rootRelativePath",
-			absoluteURL: "absoluteURL"
-			//urlify: "urlify"
+			absoluteURL: "absoluteURL",
+			urlify: "urlify"
 		}
 	}, settings);
 
