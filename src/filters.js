@@ -20,4 +20,61 @@ lib.isAbsoluteURL = function (input) {
 	} catch(e) {
 		return false;
 	}
+};
+
+/**
+ * Takes a path relative or absolute URL and makes it root relative.
+ * 
+ * Uses the pathPrefix variable to make it relative to the root of
+ * the website, wherever you are.
+ *  
+ * @param {string} input The path that should be made root relative
+ * @returns {string} The root relative path
+ */
+lib.rootRelativePath = function (input, pathPrefix) {
+	pathPrefix = (!!pathPrefix) ? pathPrefix : CONFIG.pathPrefix;
+	pathPrefix =  pathPrefix.replace(/\/$/, "");
+	
+	if (input.startsWith("/") === false) {
+		input = input === "" ? "." : input;
+		let origin = (input === ".") ? this.ctx.page.url : path.dirname(this.ctx.page.url) + "/";
+		return path.join(pathPrefix, origin, input);
+	}
+	return path.join(pathPrefix, input);
+};
+
+/**
+ * Transforms a relative URL to an absolute URL.
+ * 
+ * @param {string} input 
+ * @param {string} baseURL 
+ * @returns 
+ */
+lib.absoluteURL = function (input, baseURL) {
+	if (_plugin.isAbsoluteURL(input)) {
+		// We don't need to do anything here...
+		return input;
+	}
+
+	if (!!baseURL === false) {
+		baseURL = (!!this.ctx.site && !!this.ctx.site.baseURL) ? this.ctx.site.baseURL: "http://localhost/";
+	}
+
+	// The input path should be root relative.
+	input = _plugin.rootRelativePath.call(this, input);
+	try {
+		return (new URL(input, baseURL)).toString()
+	  } catch(e) {
+		console.error(`Failed to convert '${input}' with base ${baseURL} to an absolute URL and failed.`);
+		return input;
+	  }
+};
+
+lib.urlify = function (input, options) {
+	const config = Options.assign({
+		baseURL: "",
+		pathPrefix: "/",
+		mode: "absolute"
+	}, options);
+	return input;
 }

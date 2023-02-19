@@ -6,6 +6,7 @@ function _plugin(api, settings={}) {
 		// This is the eleventy path prefix by default
 		// but you may override it in the settings if you must.
 		pathPrefix: api.pathPrefix || "/",
+		baseURL: "http://example.com",
 
 		// Sets the mode for the urlify filter 
 		// Modes:
@@ -16,14 +17,15 @@ function _plugin(api, settings={}) {
 
 		filterMapping: {
 			// <filterName>: <functionName>"
-			isAbsoluteURL: "isAbsoluteURL"
-
+			isAbsoluteURL: "isAbsoluteURL",
+			rootRelativePath: "rootRelativePath",
+			absoluteURL: "absoluteURL"
 		}
 	}, settings);
 
 	// Ok, now register the filters...
 	Object.keys(opts.filterMapping).forEach(name => {
-		api.addFilter(name, lib[opts.filterMapping[name]]);
+		api.addFilter(name, filters[opts.filterMapping[name]]);
 	});
 }
 module.exports = _plugin;
