@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-urlify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Filters and maybe transforms to handle URLs.",
   "main": "src/plugin.js",
   "scripts": {
