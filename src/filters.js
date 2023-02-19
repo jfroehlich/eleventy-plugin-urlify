@@ -1,4 +1,5 @@
 /* eslint-env node */
+const path = require("path").posix;
 
 const lib = {};
 module.exports = lib;
@@ -32,7 +33,12 @@ lib.isAbsoluteURL = function (input) {
  * @returns {string} The root relative path
  */
 lib.rootRelativePath = function (input, pathPrefix) {
-	pathPrefix = (!!pathPrefix) ? pathPrefix : CONFIG.pathPrefix;
+	if (lib.isAbsoluteURL(input)) {
+		// We don't need to do anything here...
+		return input;
+	}
+
+	pathPrefix = (!!pathPrefix) ? pathPrefix : this.pathPrefix || "/";
 	pathPrefix =  pathPrefix.replace(/\/$/, "");
 	
 	if (input.startsWith("/") === false) {
@@ -50,8 +56,8 @@ lib.rootRelativePath = function (input, pathPrefix) {
  * @param {string} baseURL 
  * @returns 
  */
-lib.absoluteURL = function (input, baseURL) {
-	if (_plugin.isAbsoluteURL(input)) {
+lib.absoluteURL = function (input, baseURL, pathPrefix) {
+	if (lib.isAbsoluteURL(input)) {
 		// We don't need to do anything here...
 		return input;
 	}
@@ -61,7 +67,7 @@ lib.absoluteURL = function (input, baseURL) {
 	}
 
 	// The input path should be root relative.
-	input = _plugin.rootRelativePath.call(this, input);
+	input = lib.rootRelativePath.call(this, input, pathPrefix);
 	try {
 		return (new URL(input, baseURL)).toString()
 	  } catch(e) {
@@ -72,9 +78,11 @@ lib.absoluteURL = function (input, baseURL) {
 
 lib.urlify = function (input, options) {
 	const config = Options.assign({
-		baseURL: "",
-		pathPrefix: "/",
-		mode: "absolute"
+		baseURL: this.urlify.baseURL || "http://example.com",
+		pathPrefix: this.urlify.pathPrefix || "/",
+		urlifyMode: this.urlify.urlifyMode || "root-relative"
 	}, options);
+
+	console.log(this.urlify);
 	return input;
 }

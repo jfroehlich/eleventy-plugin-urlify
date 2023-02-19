@@ -10,11 +10,9 @@ test('Protocol + domain + path is fine', t => {
 		"http://example.com/schnick/../test.html",
 		"https://www.example.com/path/to/file.txt?param=1&param=2#schnick"
 	];
-	t.plan(paths.length * 2);
+	t.plan(paths.length);
 	paths.forEach(path => {
-		const result = lib.isAbsoluteURL(path);
-		t.true(result);
-		t.true(typeof result === 'boolean');
+		t.true(lib.isAbsoluteURL(path));
 	});
 });
 
@@ -29,10 +27,8 @@ test('Not an absolute URL', t => {
 		"index.html",
 		"../index.html"
 	];
-	t.plan(paths.length * 2);
+	t.plan(paths.length);
 	paths.forEach(path => {
-		const result = lib.isAbsoluteURL(path);
-		t.false(result);
-		t.true(typeof result === 'boolean');
+		t.false(lib.isAbsoluteURL(path));
 	});
 });

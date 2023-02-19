@@ -20,8 +20,11 @@ function _plugin(api, settings={}) {
 			isAbsoluteURL: "isAbsoluteURL",
 			rootRelativePath: "rootRelativePath",
 			absoluteURL: "absoluteURL"
+			//urlify: "urlify"
 		}
 	}, settings);
+
+	api.urlify = opts;
 
 	// Ok, now register the filters...
 	Object.keys(opts.filterMapping).forEach(name => {
