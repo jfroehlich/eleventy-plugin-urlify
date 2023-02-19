@@ -4,11 +4,18 @@
   "description": "Filters and maybe transforms to handle URLs.",
   "main": "src/plugin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx ava --verbose"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jfroehlich/eleventy-plugin-urlify.git"
+  },
+  "ava": {
+    "environmentVariables": {},
+    "failFast": true,
+    "files": [
+      "./tests/*.js"
+    ]
   },
   "keywords": [
     "11ty",
@@ -23,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/jfroehlich/eleventy-plugin-urlify/issues"
   },
-  "homepage": "https://github.com/jfroehlich/eleventy-plugin-urlify#readme"
+  "homepage": "https://github.com/jfroehlich/eleventy-plugin-urlify#readme",
+  "devDependencies": {
+    "ava": "^5.2.0"
+  }
 }

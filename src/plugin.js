@@ -1,4 +1,5 @@
 /* eslint-env node */
+const filters = require("./filters");
 
 function _plugin(api, settings={}) {
 	const opts = Object.assign({
@@ -14,7 +15,15 @@ function _plugin(api, settings={}) {
 		urlifyMode: "root-relative",
 
 		filterMapping: {
+			// <filterName>: <functionName>"
+			isAbsoluteURL: "isAbsoluteURL"
 
 		}
 	}, settings);
+
+	// Ok, now register the filters...
+	Object.keys(opts.filterMapping).forEach(name => {
+		api.addFilter(name, lib[opts.filterMapping[name]]);
+	});
 }
+module.exports = _plugin;
