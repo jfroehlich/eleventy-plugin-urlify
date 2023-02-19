@@ -1,0 +1,27 @@
+{
+  "name": "eleventy-plugin-urlify",
+  "version": "0.0.1",
+  "description": "Filters and maybe transforms to handle URLs.",
+  "main": "src/plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfroehlich/eleventy-plugin-urlify.git"
+  },
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy",
+    "plugin",
+    "url",
+    "filter"
+  ],
+  "author": "Johannes Fröhlich (https://jfroehlich.net/)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/jfroehlich/eleventy-plugin-urlify/issues"
+  },
+  "homepage": "https://github.com/jfroehlich/eleventy-plugin-urlify#readme"
+}
