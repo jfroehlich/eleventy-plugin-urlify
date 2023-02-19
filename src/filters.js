@@ -88,8 +88,14 @@ lib.prefixRelativePath = function (input, pathPrefix) {
 		// We don't need to do anything here...
 		return input;
 	}
+	
+	let str = "" + input;
+	if (lib.isRootRelative.call(this, input) === false) {
+		str = lib.rootRelativePath.call(this, input);
+	}
 
-	// ...
+	const origin = path.dirname(this.ctx.page.url) + "/";
+	return path.relative(origin, str);
 };
 
 lib.urlify = function (input, options) {
