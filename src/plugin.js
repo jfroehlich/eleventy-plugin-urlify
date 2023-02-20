@@ -11,7 +11,7 @@ function _plugin(api, settings={}) {
 		// Sets the mode for the urlify filter 
 		// Modes:
 		// 	- **root-relative** make URLs relative to the site root.
-		//	- **base-relative** make URLs relative to the pathPrefix
+		//	- **prefix-relative** make URLs relative to the pathPrefix
 		//  - **absolute** make URLs absolute
 		urlifyMode: "root-relative",
 
@@ -25,7 +25,8 @@ function _plugin(api, settings={}) {
 		}
 	}, settings);
 
-	api.urlify = opts;
+	// Add the data to the config in order to use it in the filters.
+	api.addGlobalData("urlify", opts);
 
 	// Ok, now register the filters...
 	Object.keys(opts.filterMapping).forEach(name => {

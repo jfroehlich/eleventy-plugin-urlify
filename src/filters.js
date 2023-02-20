@@ -99,12 +99,23 @@ lib.prefixRelativePath = function (input, pathPrefix) {
 };
 
 lib.urlify = function (input, options) {
+	if (lib.isAbsoluteURL(input)) {
+		return input;
+	}
 	const config = Options.assign({
-		baseURL: this.urlify.baseURL || "http://example.com",
-		pathPrefix: this.urlify.pathPrefix || "/",
-		urlifyMode: this.urlify.urlifyMode || "root-relative"
+		baseURL: this.ctx.urlify.baseURL || "http://example.com",
+		pathPrefix: this.ctx.urlify.pathPrefix || "/",
+		urlifyMode: this.ctx.urlify.urlifyMode || "root-relative"
 	}, options);
 
-	console.log(this.urlify);
-	return input;
+	switch(config.urlifyMode) {
+		case "absolute":
+			return lib.absoluteURL.call(this, config.baseURL, config.pathPrefix);
+		case "root-relative":
+			return lib.rootRelativePath.call(this, config.pathPrefix);
+		case "prefix-relative":
+			return lib.prefixRelativePath.call(this, config.pathPrefix);
+		default:
+			return input;
+	}	
 }
