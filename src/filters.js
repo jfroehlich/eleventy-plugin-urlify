@@ -91,11 +91,12 @@ lib.prefixRelativePath = function (input, pathPrefix) {
 	
 	let str = "" + input;
 	if (lib.isRootRelative.call(this, input) === false) {
-		str = lib.rootRelativePath.call(this, input);
+		str = lib.rootRelativePath.call(this, input, pathPrefix);
 	}
 
 	const origin = path.dirname(this.ctx.page.url) + "/";
-	return path.relative(origin, str);
+	const result = path.relative(origin, str);
+	return result;
 };
 
 lib.urlify = function (input, options={}) {
@@ -108,14 +109,20 @@ lib.urlify = function (input, options={}) {
 		urlifyMode: this.ctx.urlify.urlifyMode || "root-relative"
 	}, options);
 
+	let result;
 	switch(config.urlifyMode) {
 		case "absolute":
-			return lib.absoluteURL.call(this, config.baseURL, config.pathPrefix);
+			result = lib.absoluteURL.call(this, input, config.baseURL, config.pathPrefix);
+			break;
 		case "root-relative":
-			return lib.rootRelativePath.call(this, config.pathPrefix);
+			result = lib.rootRelativePath.call(this, input, config.pathPrefix);
+			break;
 		case "prefix-relative":
-			return lib.prefixRelativePath.call(this, config.pathPrefix);
+			result = lib.prefixRelativePath.call(this, input, config.pathPrefix);
+			break;
 		default:
-			return input;
+			result = "" + input;
 	}	
+
+	return result;
 }
