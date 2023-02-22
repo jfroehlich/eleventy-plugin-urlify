@@ -102,7 +102,7 @@ lib.urlify = function (input, options={}) {
 	if (lib.isAbsoluteURL(input)) {
 		return input;
 	}
-	const config = Options.assign({
+	const config = Object.assign({
 		baseURL: this.ctx.urlify.baseURL || "http://example.com",
 		pathPrefix: this.ctx.urlify.pathPrefix || "/",
 		urlifyMode: this.ctx.urlify.urlifyMode || "root-relative"
