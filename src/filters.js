@@ -98,7 +98,7 @@ lib.prefixRelativePath = function (input, pathPrefix) {
 	return path.relative(origin, str);
 };
 
-lib.urlify = function (input, options) {
+lib.urlify = function (input, options={}) {
 	if (lib.isAbsoluteURL(input)) {
 		return input;
 	}
