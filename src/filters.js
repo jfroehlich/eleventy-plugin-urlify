@@ -83,11 +83,21 @@ lib.absoluteURL = function (input, baseURL, pathPrefix) {
 	  }
 };
 
+/**
+ * Make a path relative to the prefixPath variable.
+ * 
+ * When input is an absolute URL, it is ignored and returned.
+ * 
+ * @param {string} input 
+ * @param {string} pathPrefix 
+ * @returns {string} The converted path
+ */
 lib.prefixRelativePath = function (input, pathPrefix) {
 	if (lib.isAbsoluteURL(input)) {
-		// We don't need to do anything here...
 		return input;
 	}
+
+	pathPrefix = pathPrefix || this.pathPrefix;
 	
 	let str = "" + input;
 	if (lib.isRootRelative.call(this, input) === false) {

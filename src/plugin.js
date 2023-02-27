@@ -20,6 +20,7 @@ function _plugin(api, settings={}) {
 			isAbsoluteURL: "isAbsoluteURL",
 			isRootRelative: "isRootRelative",
 			rootRelativePath: "rootRelativePath",
+			prefixRelativePath: "prefixRelativePath",
 			absoluteURL: "absoluteURL",
 			urlify: "urlify"
 		}
