@@ -2,7 +2,7 @@ eleventy-plugin-urlify
 ================================================================================
 
 An eleventy plugin for URL filters. Yes, there are already some… I know.
-This one is a bit different, trust me. Or don't. I don't care.
+This one is a bit different, trust me. Or don't (as you like).
 
 Ok, here is the pitch: The basic `| url` filter in eleventy doesn't compile an
 actual URL. It compiles a absolute path. The new `htmlBaseUrl` plugin transforms
