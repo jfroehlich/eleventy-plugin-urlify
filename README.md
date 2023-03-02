@@ -2,7 +2,7 @@ eleventy-plugin-urlify
 ================================================================================
 
 An eleventy plugin for URL filters. Yes, there are already some… I know.
-This one is a bit different, trust me. Or don't.
+This one is a bit different, trust me (or don't--as you like).
 
 Ok, here is the pitch: The basic `| url` filter in eleventy doesn't compile an
 actual URL. It compiles an absolute path. The new `htmlBaseUrl` plugin transforms
@@ -11,7 +11,7 @@ actual URL. It compiles an absolute path. The new `htmlBaseUrl` plugin transform
 `urlify` is different: You can use the generic `urlify` tag on every URL. 
 Absolute URLs are just passed through. And then you configure in the projects
 settings file what output you need. Make all URLs absolute (actually absolute),
-make them root-relative with eleventies `pathPrefix` or make the relative to
+make them root-relative with eleventys `pathPrefix` or make the relative to
 that prefix -- whatever you want. Aaaand █ ███ ███ █████████ ████ ██ ██████ █
 ███ ██ ███ ██████ ███ █████████ █████ ████ ████ █ ██████ ████████ ███ █████████
 █████ ████ ████ █ ██████ ████████ (I didn't implement that yet).
