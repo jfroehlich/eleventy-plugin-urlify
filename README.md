@@ -2,25 +2,25 @@ eleventy-plugin-urlify
 ================================================================================
 
 An eleventy plugin for URL filters. Yes, there are already some… I know.
-This one is a bit different, trust me. Or don't. I don't care.
+This one is a bit different, trust me. Or don't.
 
 Ok, here is the pitch: The basic `| url` filter in eleventy doesn't compile an
-actual URL. It compiles a absolute path. The new `htmlBaseUrl` plugin transforms
+actual URL. It compiles an absolute path. The new `htmlBaseUrl` plugin transforms
 -- well -- everything without much control.
 
 `urlify` is different: You can use the generic `urlify` tag on every URL. 
-Absolute URLs are just passed through. And the you configure in settings file
-what output you need. Make all URLs absolute (actually absolute), make them
-root-relative with eleventies `pathPrefix` or make the relative to that prefix
--- whatever you want. Aaaand █ ███ ███ █████████ ████ ██ ██████ █ ███ ██ ███
-██████ ███ █████████ █████ ████ ████ █ ██████ ████████ ███ █████████ █████ ████
-████ █ ██████ ████████ (I didn't implement that yet).
+Absolute URLs are just passed through. And then you configure in the projects
+settings file what output you need. Make all URLs absolute (actually absolute),
+make them root-relative with eleventies `pathPrefix` or make the relative to
+that prefix -- whatever you want. Aaaand █ ███ ███ █████████ ████ ██ ██████ █
+███ ██ ███ ██████ ███ █████████ █████ ████ ████ █ ██████ ████████ ███ █████████
+█████ ████ ████ █ ██████ ████████ (I didn't implement that yet).
 
-Well, and what if you want to just have that one URL be always root relative no
-matter what the other URLs are? Give it the `rootRelativePath` filter -- easy. You
-could also use the `absoluteURL` or `relativePath`
-(relative-to-the-pathPrefix filter but that was too long) filter. And as a goodie
-I added the `isAbsoluteURL` and `isRootRelative` filters.
+Well, and what if you want to just have that one URL always be root-relative no
+matter what the other URLs are? Give it the `rootRelativePath` filter -- easy.
+You could also use the `absoluteURL` or `relativePath`
+(relative-to-the-pathPrefix filter but that was pretty long) filter. And as a
+goodie, I added the `isAbsoluteURL` and `isRootRelative` filters.
 
 Installation
 --------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ Options
 --------------------------------------------------------------------------------
 
 There are a number of options to customize the tag and how the components are
-loaded. To get an overview here are all settings at once:
+loaded. To get an overview here are all the settings at once:
 
 ```js
 const urlifyPlugin = require("eleventy-plugin-urlify");
